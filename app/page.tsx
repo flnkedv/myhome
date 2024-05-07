@@ -1,6 +1,7 @@
-"use client"
+"use client";
 
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession, signIn, signOut } from "next-auth/react";
+import Button from "@mui/material/Button";
 
 export default function Page() {
   const { data: session } = useSession();
@@ -9,39 +10,30 @@ export default function Page() {
     <div>
       {session ? (
         <>
-          Signed in as {session.user?.email}<br />
-          <button onClick={() => signOut()}>Sign Out</button>
+          Signed in as {session.user?.email}
+          <br />
+          <Button
+            variant="contained"
+            onClick={() => {
+              signOut();
+            }}
+          >
+            Log Out
+          </Button>
         </>
       ) : (
         <>
           Not signed in <br />
-          <button onClick={() => {
-            console.log("Sign In clicked");
-            signIn();
-          }}>Sign In</button>
+          <Button
+            variant="contained"
+            onClick={() => {
+              signIn();
+            }}
+          >
+            Log In
+          </Button>
         </>
       )}
     </div>
   );
 }
-
-
-// import React from "react";
-// import { useSession, signIn, signOut } from "next-auth/react";
-
-// export default function Page() {
-//   const { data: session } = useSession()
-//   if (session) {
-//     <>
-//       Siged in as {session?.user?.email}
-//       <br />
-//       <button onClick={() => signOut()}>Sign Out</button>
-//     </>
-//   }
-//   return (
-//     <>
-//       Not signed in <br />
-//       <button onClick={() => signIn()}>Sign In</button>
-//     </>
-//   );
-// }
