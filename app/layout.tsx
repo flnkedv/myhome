@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <CustomProviders>
-      <html lang="en">
+      <html lang="th">
         <body className={inter.className}>
           {children}
           <SpeedInsights />
